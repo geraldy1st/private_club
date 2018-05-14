@@ -20,26 +20,16 @@
 </nav>
 
 <% if user_signed_in? %>
-<h1>Welcome <%= current_user.firstname.capitalize %></h1>
+<h1>Welcome <%= current_user.email %></h1>
   <% if current_user.email %>
 
-  <tbody>
+  <div class="content">
+    <ul>
     <% @users.each do |user| %>
-    <tr>
-      <td><%= user.id %></td>
-      <td><%= user.email %></td>
-      <td><%= user.lastname %></td>
-      <td><%= user.firstname %></td>
-    </tr>
+      <li><%= user.id %> <%= user.email %> <%= user.lastname %> <%= user.firstname %></li>
     <% end %>
-  </tbody>
-
-
-
-
-
-
-
+    </ul>
+  </div>
     <% end %>
 <% else %>
 <h1>👻</h1>
