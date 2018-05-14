@@ -1,0 +1,48 @@
+<nav>
+  <ul>
+    <% if user_signed_in? %>
+    <li>
+      <%= link_to "Edit", edit_user_registration_path %>
+    </li>
+    <li>
+      <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+    </li>
+
+    <% else %>
+      <li>
+        <%= link_to "sign in", new_user_session_path %>
+      </li>
+      <li>
+        <%= link_to "sign up", new_user_registration_path %>
+      </li>
+      <% end %>
+  </ul>
+</nav>
+
+<% if user_signed_in? %>
+<h1>Welcome <%= current_user.firstname.capitalize %></h1>
+  <% if current_user.email %>
+
+  <tbody>
+    <% @users.each do |user| %>
+    <tr>
+      <td><%= user.id %></td>
+      <td><%= user.email %></td>
+      <td><%= user.lastname %></td>
+      <td><%= user.firstname %></td>
+    </tr>
+    <% end %>
+  </tbody>
+
+
+
+
+
+
+
+    <% end %>
+<% else %>
+<h1>👻</h1>
+<h3>il faut se login / inscrire pour accéder à la page du club </h3>
+
+<% end %>
